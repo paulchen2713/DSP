@@ -31,7 +31,7 @@ h(1:NH) = 0.5*A(NH:-1:1);
 h(NH+2:N) = -0.5*A;
 %
 % subplot - need to show several plots simulteneously
-% 從圖可知是high-pass filter
+% -high-pass filter
 subplot(1,2,1);
 stem(0:N-1,h);
 xlabel('n');
@@ -46,3 +46,5 @@ xlabel('Normalized Frequency (\omega/\pi)');
 ylabel('Amplitude Response');
 %
 % case 3 don't need dB plots
+%
+
