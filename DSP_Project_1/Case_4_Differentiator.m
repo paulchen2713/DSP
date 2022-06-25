@@ -1,17 +1,17 @@
 %
 % Design of Case 4 Differentiator
 %
-clear all;   % clear workspace
+clear;   % clear workspace
 clc;         % clear command window
-N = 30;      % filter length
-% wp1 = 0;  ¦]¬°¤U­­±q0¶}©l¡A¬G¤£¦A»İ­nwp1
-% wp2 = pi; ¦]¬°¤W­­¥i¨ìpi¡A¬G¤£¦A»İ­nwp2
 % 
+N = 30;      % filter length
+% wp1 = 0;  å› ç‚ºä¸‹é™å¾0é–‹å§‹ï¼Œæ•…ä¸å†éœ€è¦wp1
+% wp2 = pi; å› ç‚ºä¸Šé™å¯åˆ°piï¼Œæ•…ä¸å†éœ€è¦wp2
 %
 NH = N/2;
 %
 %
-P = zeros(NH,1); % declaration «Å§i
+P = zeros(NH,1); % declaration å®£å‘Š
 for i=1:NH % 0:1:NH
     P(i) = -2*sin((i-0.5)*pi)/(i-0.5)^2;
 end
@@ -19,17 +19,19 @@ Q = 0.5*pi*eye(NH);
 A = -0.5*inv(Q)*P;
 %
 %
-h = zeros(N,1); % «ç»ò¨D±oh ?
+h = zeros(N,1); % æ€éº¼æ±‚å¾—h ?
 h(1:NH) = 0.5*A(NH:-1:1);
 h(NH+1:N) = -0.5*A;
 %
 % subplot - need to show several plots simulteneously
+% 
 subplot(1,2,1);
 stem(0:N-1,h);
 xlabel('n');
 ylabel('Impulse Response');
 %
 % Amplitude Response
+% 
 subplot(1,2,2);
 AR = abs(freqz(h,1,0:pi/200:pi));
 plot(0:1/200:1,AR);
@@ -38,7 +40,6 @@ xlabel('Normalized Frequency (\omega/\pi)');
 ylabel('Amplitude Response');
 pause;
 close all;
-%
 %
 % signal simulation
 %
