@@ -1,12 +1,12 @@
 %
 % Design of case 4 Hilbert Transformers
 %
-clear all;   % clear workspace
-clc;         % clear command window
+clear;   % clear workspace
+clc;     % clear command window
+% 
 N = 30;
 wp1 = 0.05*pi;
-% wp2 = pi; ¦]¬°¤W­­¥i¨ìpi¡A¬G¤£¦A»İ­nwp2
-% 
+% wp2 = pi; å› ç‚ºä¸Šé™å¯åˆ°piï¼Œæ•…ä¸å†éœ€è¦wp2
 %
 NH = N/2;
 %
@@ -25,18 +25,19 @@ for i=1:NH % 0:1:NH
 end
 A = -0.5*inv(Q)*P;
 %
-%
-h = zeros(N,1); % «ç»ò¨D±oh ?
+h = zeros(N,1); % æ€éº¼æ±‚å¾—h ?
 h(1:NH) = 0.5*A(NH:-1:1);
 h(NH+1:N) = -0.5*A;
 %
 % subplot - need to show several plots simulteneously
+% 
 subplot(1,2,1);
 stem(0:N-1,h);
 xlabel('n');
 ylabel('Impulse Response');
 %
 % Amplitude Response
+% 
 subplot(1,2,2);
 AR = abs(freqz(h,1,0:pi/200:pi));
 plot(0:1/200:1,AR);
@@ -46,3 +47,4 @@ ylabel('Amplitude Response');
 pause;
 %
 % case 3 don't need dB plots
+% 
