@@ -46,3 +46,5 @@ xlabel('Normalized Frequency (\omega/\pi)');
 ylabel('Amplitude Response');
 %
 % case 3 don't need dB plots
+%
+
