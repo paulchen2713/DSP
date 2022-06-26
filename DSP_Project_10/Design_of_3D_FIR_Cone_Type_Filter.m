@@ -1,8 +1,9 @@
 %
 % Design_of_3D_FIR_Cone_type_Filter
 %
-clear all;   % clear workspace
-clc;         % clear command window
+clear;   % clear workspace
+clc;     % clear command window
+%
 N = 20;      % -20 ~ 20
 theta = 75;
 wt = 0.2*pi;
@@ -76,13 +77,13 @@ h = zeros(2*N+1, 1);
 h(N+1) = A(1);
 h(1:N) = 0.5 * flipud(A(2:N+1)); % flip up down
 h(N+2:2*N+1) = 0.5 * A(2:N+1);
+%
 % FR = abs(freqz(h, 1, 0:deltaw1:pi));
 % subplot(1, 2, 1);
 % plot(0:deltaw1/pi:1,FR);
 % xlabel('Normalized Frequency');
 % ylabel('Magnitude Response');
 % title('1D Prototype Filter');
-%
 % 
 Tab = zeros(N+1, N+1);
 Tab(1, 1) = 1;
@@ -138,7 +139,6 @@ B_fan = B;
 % Design of 2D  Circular Low-pass Filter
 %
 wr = wup;
-%
 %
 deltaw = 0.5 * pi / pointw; % 1D
 deltaw1 = pi / pointw; % 2D
@@ -201,13 +201,13 @@ h = zeros(2*N+1, 1);
 h(N+1) = A(1);
 h(1:N) = 0.5 * flipud(A(2:N+1)); % flip up down
 h(N+2:2*N+1) = 0.5 * A(2:N+1);
+%
 % FR = abs(freqz(h, 1, 0:deltaw1:pi));
 % subplot(1, 2, 1);
 % plot(0:deltaw1/pi:1,FR);
 % xlabel('Normalized Frequency');
 % ylabel('Magnitude Response');
 % title('1D Prototype Filter');
-%
 % 
 Tab = zeros(N+1, N+1);
 Tab(1, 1) = 1;
@@ -259,8 +259,6 @@ title('2D FIR Circular Type Filter');
 %
 wc_cir = wc;
 h_cir = h;
-%
-%
 %
 %
 t000 = t00 + t10 * r00;
