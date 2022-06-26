@@ -1,7 +1,8 @@
 %
 % Design_of_3D_FIR_Cone-Shaped_Filter
 %
-
+clear;
+clc;
 %
 %
 A3=zeros(N+1,N+1,N+1);
@@ -76,4 +77,4 @@ set(gca,'ztick',linspace(-1,1,5));
 %
 grid on;
 hidden off;
-
+%
