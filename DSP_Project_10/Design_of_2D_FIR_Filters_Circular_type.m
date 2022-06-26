@@ -2,12 +2,13 @@
 % Design of 2D FIR filters by McClellan Transformation Techniques
 % 2. Circular Type
 %
-clear all;   % clear workspace
-clc;         % clear command window
-N = 20; % -20 ~ 20 ¦@41ÂI
+clear;   % clear workspace
+clc;     % clear command window
+%
+N = 20; % -20 ~ 20 å…±41é»
 wr = 0.5*pi;
 wt = 0.2*pi;
-pointw = 200; % ¨ú¼Ë200ÂI
+pointw = 200; % å–æ¨£200é»
 %
 %
 deltaw = 0.5 * pi / pointw; % 1D
@@ -23,9 +24,11 @@ for iw = 0:pointw
    r = r -2*(0.5*cos(w1) + 0.5*cos(w2))*c;
    Q = Q + c*c';
 end
+%
 % r = L * r / (pointw + 1);
 % Q = L * Q / (pointw + 1);
-% L ¬°½u¿n¤Àªø«× ¦ı¦b inv(Q)*r ·|®ø±¼ ¤£¼vÅT T µ²ªG
+% L ç‚ºç·šç©åˆ†é•·åº¦ ä½†åœ¨ inv(Q)*r æœƒæ¶ˆæ‰ ä¸å½±éŸ¿ T çµæœ
+%
 r = r / (pointw + 1);
 Q = Q / (pointw + 1);
 T = -0.5 * inv(Q) * r;
@@ -72,7 +75,7 @@ A = -0.5 * inv(Qp+Qs) * P;
 %
 h = zeros(2*N+1, 1);
 h(N+1) = A(1);
-h(1:N) = 0.5 * flipud(A(2:N+1)); % flip up doum ¤ÏÂà¾ã­Ócolumn vector
+h(1:N) = 0.5 * flipud(A(2:N+1)); % flip up doum åè½‰æ•´å€‹column vector
 h(N+2:2*N+1) = 0.5 * A(2:N+1);
 FR = abs(freqz(h, 1, 0:deltaw1:pi));
 subplot(1, 2, 1);
@@ -81,9 +84,9 @@ xlabel('Normalized Frequency');
 ylabel('Magnitude Response');
 title('1D Prototype Filter');
 %
-% 
-% Ã¸»s a, b«Y¼ÆÂà´«ªí®æ
-Tab = zeros(N+1, N+1); % Tab a«Y¼ÆÂàb«Y¼Æ
+% ç¹ªè£½ a, bä¿‚æ•¸è½‰æ›è¡¨æ ¼
+%
+Tab = zeros(N+1, N+1); % Tab aä¿‚æ•¸è½‰bä¿‚æ•¸
 Tab(1, 1) = 1;
 Tab(2, 2) = 1;
 for in = 2:N
@@ -94,7 +97,7 @@ B = zeros(N+1, 1);
 for in = 0:N
     B = B + A(in+1) * Tab(in+1,:)';
 end
-F = zeros(3, 3); % 3 x 3 vector(¯x°})
+F = zeros(3, 3); % 3 x 3 vector(çŸ©é™£)
 F(1, 1) = 0.25 * t11;
 F(1, 2) = 0.5 * t10;
 F(1, 3) = 0.25 * t11;
@@ -107,11 +110,11 @@ F(3, 3) = 0.25 * t11;
 %
 %
 h2 = zeros(2*N+1, 2*N+1);
-h2(N+1, N+1) = B(1); % ¤¤¤ßÂI
+h2(N+1, N+1) = B(1); % ä¸­å¿ƒé»
 h2(N:N+2, N:N+2) = h2(N:N+2, N:N+2) + B(2)*F;
 FN = F;
 for in = 2:N
-    FN = conv2(FN, F); % conv2() ¤Gºûconvolution
+    FN = conv2(FN, F); % conv2() äºŒç¶­convolution
     h2(N+1-in:N+1+in, N+1-in:N+1+in) = h2(N+1-in:N+1+in, N+1-in:N+1+in) + B(in+1) * FN; 
 end
 %
