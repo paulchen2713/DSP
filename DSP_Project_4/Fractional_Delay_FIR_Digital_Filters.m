@@ -1,18 +1,20 @@
 %
 % Design of Fractional_Delay_FIR_Digital_Filters
 %
-clear all;   % clear workspace
-clc;         % clear command window
+clear;   % clear workspace
+clc;     % clear command window
+%
 N = 50;
-M = 7; % M=7¬°©_¼Æ 0 1 2 3 4 5 6 7 
-       %    °¸¼Æ¶µ 2 4 6, ¶µ¼Æ 3
-       %    ©_¼Æ¶µ 1 3 5 7, ¶µ¼Æ 4
-       % M=8¬°°¸¼Æ 0 1 2 3 4 5 6 7 8 
-       %    °¸¼Æ¶µ 2 4 6 8, ¶µ¼Æ 4
-       %    ©_¼Æ¶µ 1 3 5 7, ¶µ¼Æ 4
+M = 7; % M=7ç‚ºå¥‡æ•¸ 0 1 2 3 4 5 6 7 
+       %    å¶æ•¸é … 2 4 6, é …æ•¸ 3
+       %    å¥‡æ•¸é … 1 3 5 7, é …æ•¸ 4
+       % M=8ç‚ºå¶æ•¸ 0 1 2 3 4 5 6 7 8 
+       %    å¶æ•¸é … 2 4 6 8, é …æ•¸ 4
+       %    å¥‡æ•¸é … 1 3 5 7, é …æ•¸ 4
+%
 wp = 0.9*pi;
-pointw = 200; % ¨ú¼ËÂI¼Æ
-pointp = 60;  % ¨ú¼ËÂI¼Æ
+pointw = 200; % å–æ¨£é»æ•¸
+pointp = 60;  % å–æ¨£é»æ•¸
 %
 %
 j = 0 + i;
@@ -73,8 +75,8 @@ Qb = wp * Qb / point;
 b = -0.5 * inv(Qb)*rb;
 %
 %
-a2 = reshape(a, NH+1, Mc); % a ¤À¦¨ Mc¤p¬q
-b2 = reshape(b, NH, Ms);   % b ¤À¦¨ Ms¤p¬q
+a2 = reshape(a, NH+1, Mc); % a åˆ†æˆ Mcå°æ®µ
+b2 = reshape(b, NH, Ms);   % b åˆ†æˆ Mså°æ®µ
 h = zeros(N+1, M+1);
 h(NH+1, 1) = 1;  % middle = 1
 for im = 1:Mc
