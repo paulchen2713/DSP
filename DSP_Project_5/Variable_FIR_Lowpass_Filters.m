@@ -1,15 +1,16 @@
 %
 % Design of Variable_FIR_Lowpass_Filters
 %
-clear all;   % clear workspace
-clc;         % clear command window
+clear;   % clear workspace
+clc;     % clear command window
+%
 N = 50;
 M = 7; 
 wp1 = 0.2*pi;
 wp2 = 0.6*pi;
 wt = 0.2*pi;
-pointw = 200; % ¨ú¼ËÂI¼Æ
-pointp = 60;  % ¨ú¼ËÂI¼Æ
+pointw = 200; % å–æ¨£é»æ•¸
+pointp = 60;  % å–æ¨£é»æ•¸
 %
 %
 NH = N/2;
@@ -89,7 +90,7 @@ zlabel('Magnitude Response');
 pause;
 %
 %
-% print ¦U­Ó ¤lÂoªi¾¹
+% print å„å€‹ å­æ¿¾æ³¢å™¨
 for im = 0:M
     MRs = abs(freqz(h(:,im+1), 1, 0:pi/200:pi));
     subplot(3, 3, im+1);
