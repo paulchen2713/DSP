@@ -73,7 +73,7 @@ end
 %
 XX = zeros(pointw+1, pointp+1);
 YY = zeros(pointw+1, pointp+1);
-
+%
 for ip = 0:pointp
     XX(:, ip+1) = (0:deltaw:pi)'/pi;
 end
@@ -89,11 +89,12 @@ ylabel('Variable p');
 zlabel('Magnitude Response');
 pause;
 %
+% print各個子濾波器
 %
-% print 各個 子濾波器
 for im = 0:M
     MRs = abs(freqz(h(:,im+1), 1, 0:pi/200:pi));
     subplot(3, 3, im+1);
     plot(0:1/200:1, MRs);
     axis([0, 1, 0, 100]);
 end
+%
