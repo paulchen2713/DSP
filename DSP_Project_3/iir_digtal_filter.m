@@ -3,20 +3,21 @@
 %
 clear all;
 clc;
-n=14; % ¤À¥À­Ó¼Æ
-m=14; % ¤À¤l­Ó¼Æ
-ws=0.475*pi; % °ª³qÂoªi
+%
+n=14; % åˆ†æ¯å€‹æ•¸
+m=14; % åˆ†å­å€‹æ•¸
+ws=0.475*pi; % é«˜é€šæ¿¾æ³¢
 wp=0.525*pi; %
 delta=0.00001;
 epsilon=0.00001;
 tau=12;
-pointw=10000; % ¨ú¼Ë¼Æ
+pointw=10000; % å–æ¨£æ•¸
 M=100;
 %
 %
 deltaw=pi/pointw;
 deltaM=pi/M;
-nm=n+m+1; % «Y¼Æ­Ó¼Æ
+nm=n+m+1; % ä¿‚æ•¸å€‹æ•¸
 x=zeros(nm,1);
 j=0+i;
 %
@@ -84,8 +85,8 @@ while delta_x>epsilon
     %
     %
     x=quadprog(Q,r,B,d);
-    a=x(1:n); %¤À¥À
-    b=x(n+1:nm); %¤À¤l
+    a=x(1:n); %åˆ†æ¯
+    b=x(n+1:nm); %åˆ†å­
     FR=abs(freqz(b,[1;a],0:pi/200:pi));
     plot(0:1/200:1,FR);
     xlabel('Normalized frequency (\omega/\pi)');
