@@ -3,6 +3,7 @@
 %
 clear all;   % clear workspace
 clc;         % clear command window
+%
 n = 14;
 m = 14;
 tau = 12;
@@ -74,8 +75,8 @@ while delta_x > epsilon
     Qs = real(ws * Qs/pointstop);
     Q = Qp + Qs;
     %
-    %
     % finding B & X
+    %
     B = zeros(M+1, nm);
     for im = 0 : M
         w = im * deltaM;
@@ -85,8 +86,8 @@ while delta_x > epsilon
     end
     d = (1-delta) * ones(M+1, 1);
     %
-    %
     % MATLAB tools - quadratic programming
+    %
     x = quadprog(Q, r, B, d);
     a = x(1:n);
     b = x(n+1:nm);
@@ -96,8 +97,8 @@ while delta_x > epsilon
     ylabel('Magnitude Response');
     pause;
     %
-    %
     % pass-band
+    %
     for ip = 1: pointpass
         w = PASS(ip);
         eaw = zeros(n, 1);
@@ -106,7 +107,9 @@ while delta_x > epsilon
         end
         Whp(ip) = 1 / (abs(1+a'*eaw))^2;
     end
+    %
     % stop-band
+    %
     for is = 1: pointstop
         w = STOP(is);
          eaw = zeros(n, 1);
@@ -120,7 +123,6 @@ while delta_x > epsilon
     delta_x = norm(x - xk_1) / norm(x)
 end
 %
-%
 FR = abs(freqz(b, [1;a], 0:pi/200:pi));
 subplot(1,2,1);
 plot(0:1/200:1, FR);
@@ -130,3 +132,4 @@ ylabel('Magnitude Response');
 subplot(1,2,2);
 zplane(b',[1;a]');
 axis([-2,2,-2,2]);
+%
