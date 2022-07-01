@@ -119,6 +119,7 @@ axis([0, wp/pi, -0.5,0.5, 0, 1.1]);
 xlabel('Frequency');
 ylabel('Variable p');
 zlabel('Magnitude Response');
+%
 subplot(1, 2, 2);
 plot3(XX, YY, GD);
 axis([0, wp/pi, -0.5, 0.5, NH-0.5, NH+0.5]);
