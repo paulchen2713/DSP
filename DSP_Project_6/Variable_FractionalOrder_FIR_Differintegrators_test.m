@@ -3,8 +3,9 @@
 %
 % example 1. (N,  M,  w1,     w2,    p1,   p2)
 %          = (40, 5, 0.05pi, 0.95pi, -0.5, +0.5)
-clear all;   % clear workspace
-clc;         % clear command window
+clear;   % clear workspace
+clc;     % clear command window
+%
 N = 40;
 M = 5;
 w1 = 0.05 * pi;
@@ -116,5 +117,4 @@ for im=0:M
     plot(0:1/200:1,MRs);
     axis([0,1,0,5]);
 end
-
 
