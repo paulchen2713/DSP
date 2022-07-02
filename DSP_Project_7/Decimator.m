@@ -3,8 +3,9 @@
 %
 % Decimator
 %
-clear all;   % clear workspace
-clc;         % clear command window
+clear;   % clear workspace
+clc;     % clear command window
+%
 N = 101;
 wp = 0.25*pi;
 ws = 0.30*pi;
@@ -45,6 +46,7 @@ h(1:NH) = 0.5*A(NH+1:-1:2);
 h(NH+2:N) = 0.5*A(2:NH+1);
 %
 % need to show several plots simulteneously
+%
 subplot(2,3,1);
 stem(0:N-1,h);
 xlabel('n');
@@ -52,6 +54,7 @@ ylabel('Impulse Response');
 title('Case 1 Lowpass Filter');
 %
 % Amplitude Response
+%
 subplot(2,3,4);
 AR = abs(freqz(h,1,0:pi/200:pi));
 plot(0:1/200:1,AR);
@@ -78,7 +81,6 @@ stem(0:(N-1)/2,h2);
 xlabel('n');
 title('Down Sampling M = 2');
 %
-% 
 subplot(2,3,5);
 FR2 = abs(freqz(h2,1,0:pi/200:pi));
 plot(0:1/200:1,FR2);
@@ -98,7 +100,6 @@ stem(0:floor(N/3),h3);
 xlabel('n');
 title('Down Sampling M = 3');
 %
-% 
 subplot(2, 3, 6);
 FR3 = abs(freqz(h3,1,0:pi/200:pi));
 plot(0:1/200:1,FR3);
@@ -106,5 +107,4 @@ axis([0,1,0,1.1]);
 xlabel('Normalized Frequency (\omega/\pi)');
 ylabel('Amplitude Response');
 title('Down Sampling M = 3');
-%
-%
+
