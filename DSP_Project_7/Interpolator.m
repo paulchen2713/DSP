@@ -3,15 +3,15 @@
 %
 % Interpolator
 %
-clear all;   % clear workspace
-clc;         % clear command window
-N = 33;
+clear;   % clear workspace
+clc;     % clear command window
+%
+N  = 33;
 wp = 0.30*pi;
 ws = 0.50*pi;
 % Wp = Ws = 1;
 %
 NH = (N-1)/2;
-%
 %
 P = zeros(NH+1,1);
 Qp = zeros(NH+1,NH+1);
@@ -38,13 +38,13 @@ end
 Q = Qp + Qs;
 A = -0.5*inv(Q)*P;
 %
-%
 h = zeros(N,1);
 h(NH+1) = A(1);
 h(1:NH) = 0.5*A(NH+1:-1:2);
 h(NH+2:N) = 0.5*A(2:NH+1);
 %
 % need to show several plots simulteneously
+%
 subplot(2,4,1);
 stem(0:N-1,h);
 xlabel('n');
@@ -52,6 +52,7 @@ ylabel('Impulse Response');
 title('Case 1 Lowpass Filter');
 %
 % Amplitude Response
+%
 subplot(2,4,5);
 AR = abs(freqz(h,1,0:pi/200:pi));
 plot(0:1/200:1,AR);
@@ -80,7 +81,6 @@ stem(0:3*(N-1),h3);
 xlabel('n');
 title('Up Sampling L = 3');
 %
-% 
 subplot(2, 4, 6);
 FR3 = abs(freqz(h3,1,0:pi/200:pi));
 plot(0:1/200:1,FR3);
@@ -97,7 +97,6 @@ ws = 1.5*pi/3;
 % Wp = Ws = 1;
 %
 NH = (N-1)/2;
-%
 %
 P = zeros(NH+1,1);
 Qp = zeros(NH+1,NH+1);
@@ -124,13 +123,13 @@ end
 Q = Qp + Qs;
 A = -0.5*inv(Q)*P;
 %
-%
 hL = zeros(N,1);
 hL(NH+1) = A(1);
 hL(1:NH) = 0.5*A(NH+1:-1:2);
 hL(NH+2:N) = 0.5*A(2:NH+1);
 %
 % need to show several plots simulteneously
+%
 subplot(2,4,3);
 stem(0:N-1,hL);
 xlabel('n');
@@ -138,6 +137,7 @@ ylabel('Impulse Response');
 % title('Case 1 Lowpass Filter');
 %
 % Amplitude Response
+%
 subplot(2,4,7);
 FRL = abs(freqz(hL,1,0:pi/200:pi));
 plot(0:1/200:1,FRL);
@@ -146,14 +146,12 @@ xlabel('Normalized Frequency (\omega/\pi)');
 ylabel('Amplitude Response');
 % title('Case 1 Lowpass Filter');
 %
-%
 hI = conv(h3, hL);
 subplot(2, 4, 4);
 stem(0:128,hI);
 xlabel('n');
 % title('Up Sampling L = 3');
 %
-% 
 subplot(2, 4, 8);
 FRI = abs(freqz(hI,1,0:pi/200:pi));
 plot(0:1/200:1,FRI);
@@ -163,12 +161,10 @@ ylabel('Amplitude Response');
 pause;
 % title('Up Sampling L = 3');
 %
-%
 subplot(3, 1, 1);
 stem(h);
 subplot(3, 1, 2);
 stem(h3);
 subplot(3, 1, 3);
 stem(hI);
-%
-%
+
