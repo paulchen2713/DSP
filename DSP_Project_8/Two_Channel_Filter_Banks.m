@@ -59,7 +59,7 @@ iteration = 0;
 %
 while deltak >= epsilon
     iteration = iteration + 1
-    Ak1 = A; % Ak1取前1次的結果
+    Ak1 = A; % Ak1穡繳竄e1礎繡穠繙繕簡穠G
     P = zeros(NH, 1);
     Q1 = zeros(NH, NH);
     Q2 = zeros(NH, NH);
@@ -113,3 +113,4 @@ while deltak >= epsilon
     deltak = norm(A - Ak1) / norm(A)
     pause;
 end
+
